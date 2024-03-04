@@ -37,5 +37,5 @@ Stéphane-Hervé
 
 ## Contact
 
-For questions, feedback, or support, please contact [https://github.com/ShaoLunix/](https://github.com/ShaoLunix/HR-ADUC-Datasimulator/issues)https://github.com/ShaoLunix/HR-ADUC-Datasimulator/issues.
+For questions, feedback, or support, please contact (https://github.com/ShaoLunix/HR-ADUC-Datasimulator/issues)https://github.com/ShaoLunix/HR-ADUC-Datasimulator/issues.
 

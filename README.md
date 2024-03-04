@@ -21,7 +21,7 @@ HR-ADUC-Datasimulator is a Python script designed to generate simulated data for
 
 HR-ADUC-Datasimulator is licensed under the GNU Lesser General Public License v3.0 (LGPL-3.0). You may use, modify, and distribute this script under the terms of the license.
 
-For more details, please see the [LICENSE](LICENSE) file.
+For more details, please see the [LIC](LICENSE) file.
 
 ## Contributions
 

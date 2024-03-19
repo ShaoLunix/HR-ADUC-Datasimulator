@@ -12,6 +12,7 @@
 #                                                                             #
 # Versions                                                                    #
 # [2024-02-29] [1.0.0.0] [Stéphane-Hervé] - First version                     #
+# [2024-03-19] [1.0.0.1] [Stéphane-Hervé] - Bugs fixes                        #
 # *************************************************************************** #
 
 import pandas as pd
@@ -55,6 +56,8 @@ def load_parameters_from_ini(filename):
     for section in config.sections():
         for key, value in config.items(section):
             if key == lang or \
+            	key == txt_lists_gen or key == txt_user_acc_def or key == txt_files_def or \
+            	key == txt_rh_users_list or key == txt_files_gen or \
                 key == pf_kname or key == unpf_kname or key == addgp_kname or \
                 key == genacc_kname or key == sysserv_kname or \
                 key == pfminocc_kname or key == pfmaxocc_kname or \
@@ -79,7 +82,7 @@ max_numberof_groups = ini_parameters[max_nbofgp_kname]
 max_numberof_groups = int(max_numberof_groups[0])
 
 
-print(ini_parameters[txt_lists_gen])
+print(", ".join(ini_parameters[txt_lists_gen]))
 
 # Creation of the list of remunerated functions associated with the accounts with their autorized number of occurrences
 functions_str = ini_parameters[pf_kname]
@@ -141,7 +144,7 @@ max_numberof_system_service_accounts = len(system_service_accounts)
 min_numberof_system_service_accounts = math.floor(max_numberof_system_service_accounts * system_service_accounts_rate)
 numberof_system_service_accounts = random.randint(min_numberof_system_service_accounts, max_numberof_system_service_accounts)
 
-print(ini_parameters[txt_user_acc_def])
+print(", ".join(ini_parameters[txt_user_acc_def]))
 # Generation of a unique SamAccountName
 def generate_unique_samaccountname(first_name, last_name, existing_samaccountnames):
     # Handle cases where first or last name is empty
@@ -205,8 +208,8 @@ def assign_user_function(existing_user_functions):
         elif all(item[1] == 0 for item in existing_user_functions):
             raise ValueError("All user functions have reached their maximum occurrences.")
 
-print(ini_parameters[txt_files_def])
-print(ini_parameters[txt_rh_users_list])
+print(", ".join(ini_parameters[txt_files_def]))
+print(", ".join(ini_parameters[txt_rh_users_list]))
 # Generation of CSV files
 def generate_csv_files():
     try:

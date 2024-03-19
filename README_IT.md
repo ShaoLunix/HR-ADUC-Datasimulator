@@ -2,6 +2,27 @@
 
 HR-ADUC-Datasimulator è uno script Python progettato per generare dati simulati per gli attributi degli utenti e dei gruppi di Active Directory. È destinato a facilitare i test e la dimostrazione dei processi di estrazione dei dati, mantenendo al contempo la riservatezza utilizzando dati simulati invece di informazioni reali sugli utenti.
 
+## Prerequisiti
+
+Per funzionare correttamente, questo script richiede i seguenti prerequisiti:
+1. Che Python sia installato sulla macchina che lo esegue. La versione utilizzata per lo sviluppo di questo script è la 3.12.2. È consigliabile utilizzare una versione a partire dalla 3.6.
+2. Che siano installati i seguenti moduli:
+    a. pandas:
+        Questa libreria fornisce strutture dati e strumenti di analisi dati.
+    b. configparser:
+        Questo modulo consente di lavorare con file di configurazione in formato INI.
+    c. Faker:
+        Questa libreria genera dati falsi come nomi, indirizzi, numeri di telefono, ecc.
+    d. random o random2:
+        Questi moduli forniscono funzioni per generare numeri casuali.
+    e. math:
+        Questo modulo fornisce un insieme di funzioni matematiche standard come funzioni trigonometriche, esponenziali, logaritmiche, ecc.
+    f. unidecode:
+        Questo modulo consente la traslitterazione di stringhe Unidecode in ASCII.
+
+I moduli configparser, random e math sono normalmente inclusi in Python.
+I moduli pandas, Faker e unidecode sono pacchetti esterni.
+
 ## Caratteristiche
 
 - Genera dati casuali per simulare l'estrazione degli attributi degli account Active Directory (AD).

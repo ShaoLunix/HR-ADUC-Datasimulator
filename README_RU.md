@@ -1,41 +1,62 @@
 # HR-ADUC-Datasimulator
 
-HR-ADUC-Datasimulator is a Python script designed to generate simulated data for Active Directory User and Group attributes. It is intended to facilitate testing and demonstration of data extraction processes, while also maintaining confidentiality by using simulated data instead of real user information.
+HR-ADUC-Datasimulator - это скрипт на Python, предназначенный для генерации имитационных данных для атрибутов пользователей и групп Active Directory. Он призван упростить тестирование и демонстрацию процессов извлечения данных, обеспечивая конфиденциальность с помощью имитационных данных вместо реальной информации о пользователях.
 
-## Features
+## Требования
 
-- Generates random data to simulate extraction of attributes of Active Directory (AD) accounts.
-- Helps demonstrate data extraction processes without revealing real user information.
-- Allows testing and verification of data coherence between AD accounts and human resources (HR) extractions.
-- Highlights anomalies and suggests modifications to improve security on the ADUC server.
+Для правильной работы этого скрипта требуется следующее:
+1. Python должен быть установлен на машине, на которой он будет запущен. Версия, использованная для разработки этого скрипта, - 3.12.2. Рекомендуется использовать версию от 3.6 и выше.
+2. Должны быть установлены следующие модули:
+    a. pandas:
+        Эта библиотека предоставляет структуры данных и инструменты для анализа данных.
+    b. configparser:
+        Этот модуль позволяет работать с файлами конфигурации в формате INI.
+    c. Faker:
+        Эта библиотека генерирует фальшивые данные, такие как имена, адреса, номера телефонов и т. д.
+    d. random или random2:
+        Эти модули предоставляют функции для генерации случайных чисел.
+    e. math:
+        Этот модуль предоставляет набор стандартных математических функций, таких как тригонометрические, экспоненциальные, логарифмические функции и т. д.
+    f. unidecode:
+        Этот модуль позволяет транслитерировать строки Unidecode в ASCII.
 
-## Usage
+Модули configparser, random и math обычно поставляются вместе с Python.
+Модули pandas, Faker и unidecode являются внешними пакетами.
 
-1. Clone or download the repository to your local machine.
-2. Дублируйте файл parameters_[XX].ini для вашего языка и переименуйте его просто в parameters.ini.
-3. Customize the parameters.ini file to define specific settings for the data generation process.
-4. Run the HR-ADUC-Datasimulator.py script to generate simulated data.
-5. Analyze the output and use it for testing, demonstration, or security improvement purposes.
+## Возможности
 
-## License
+- Генерирует случайные данные для имитации извлечения атрибутов учетных записей Active Directory (AD).
+- Помогает демонстрировать процессы извлечения данных, не раскрывая реальной информации о пользователях.
+- Позволяет тестировать и проверять согласованность данных между учетными записями AD и извлечениями отдела кадров (HR).
+- Выявляет аномалии и предлагает изменения для улучшения безопасности на сервере ADUC.
 
-HR-ADUC-Datasimulator is licensed under the GNU Lesser General Public License v3.0 (LGPL-3.0). You may use, modify, and distribute this script under the terms of the license.
+## Использование
 
-For more details, please see the [LICENSE](https://github.com/ShaoLunix/HR-ADUC-Datasimulator/blob/main/LICENSE) file.
+1. Склонируйте или загрузите репозиторий на ваш локальный компьютер.
+2. Дублируйте соответствующий файл parameters_[XX].ini для вашего языка и переименуйте его в parameters.ini.
+3. Настройте файл parameters.ini для установки конкретных параметров процесса генерации данных.
+4. Запустите скрипт HR-ADUC-Datasimulator.py для генерации имитационных данных.
+5. Проанализируйте результат и используйте его для тестирования, демонстрации или улучшения безопасности.
 
-## Contributions
+## Лицензия
 
-Contributions to this project are welcome. If you encounter any issues, have suggestions for improvements, or want to contribute new features, please open an issue or submit a pull request on GitHub.
+HR-ADUC-Datasimulator лицензирован по GNU Lesser General Public License v3.0 (LGPL-3.0). Вы можете использовать, изменять и распространять этот скрипт в соответствии с условиями лицензии.
 
-## Disclaimer
+Для получения более подробной информации, пожалуйста, ознакомьтесь с файлом [LICENSE](https://github.com/ShaoLunix/HR-ADUC-Datasimulator/blob/main/LICENSE).
 
-This script is provided as-is, without any warranty or guarantee of any kind. Use it at your own risk.
+## Вклад
 
-## Author
+Вклад в этот проект приветствуется. Если у вас возникли проблемы, есть предложения по улучшению или вы хотите внести новые функции, пожалуйста, откройте проблему или запрос на включение на GitHub.
 
-Stéphane-Hervé
+## Предупреждение
 
-## Contact
+Этот скрипт предоставляется "как есть", без каких-либо гарантий или обязательств любого рода. Используйте его на свой страх и риск.
 
-For questions, feedback, or support, please contact https://github.com/ShaoLunix/HR-ADUC-Datasimulator/issues.
+## Автор
+
+Стефан-Эрве
+
+## Контакты
+
+Для вопросов, комментариев или поддержки, пожалуйста, свяжитесь с нами по адресу https://github.com/ShaoLunix/HR-ADUC-Datasimulator/issues.
 

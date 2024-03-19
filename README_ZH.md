@@ -2,6 +2,27 @@
 
 HR-ADUC-Datasimulator 是一个用于生成 Active Directory 用户和组属性模拟数据的 Python 脚本。它旨在通过使用模拟数据而不是真实用户信息来促进数据提取过程的测试和演示，并保持机密性。
 
+## 先决条件
+
+为了正常运行，此脚本需要满足以下先决条件：
+1. 在运行脚本的计算机上安装Python。该脚本开发所使用的版本为3.12.2。建议使用3.6或更高版本。
+2. 安装以下模块：
+    a. pandas：
+        此库提供数据结构和数据分析工具。
+    b. configparser：
+        此模块允许使用INI格式配置文件。
+    c. Faker：
+        此库生成虚假数据，如姓名、地址、电话号码等。
+    d. random或random2：
+        这些模块提供生成随机数的函数。
+    e. math：
+        此模块提供一组标准数学函数，如三角函数、指数函数、对数函数等。
+    f. unidecode：
+        此模块将Unidecode字符串转换为ASCII。
+
+configparser、random和math模块通常包含在Python中。
+pandas、Faker和unidecode模块是外部包。
+
 ## 特点
 
 - 生成随机数据以模拟提取 Active Directory (AD) 帐户的属性。

@@ -11,8 +11,8 @@
 # while allowing for comprehensive testing and validation.                    #
 #                                                                             #
 # Versions                                                                    #
-# [2024-02-29] [1.0.0.0] [Stéphane-Hervé] - First version                     #
-# [2024-03-19] [1.0.0.1] [Stéphane-Hervé] - Bugs fixes                        #
+# [2024-02-29] [1.0.0] [Stéphane-Hervé] - First version                     #
+# [2024-03-19] [1.0.1] [Stéphane-Hervé] - Bugs fixes                        #
 # *************************************************************************** #
 
 import pandas as pd

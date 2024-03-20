@@ -11,8 +11,9 @@
 # while allowing for comprehensive testing and validation.                    #
 #                                                                             #
 # Versions                                                                    #
-# [2024-02-29] [1.0.0] [Stéphane-Hervé] - First version                     #
-# [2024-03-19] [1.0.1] [Stéphane-Hervé] - Bugs fixes                        #
+# [2024-02-29] [1.0.0] [Stéphane-Hervé] - First version                       #
+# [2024-03-19] [1.0.1] [Stéphane-Hervé] - Bugs fixes                          #
+# [2024-03-20] [1.0.2] [Stéphane-Hervé] - Encoding fixes                      #
 # *************************************************************************** #
 
 import pandas as pd
@@ -25,6 +26,7 @@ from unidecode import unidecode
 # Parameters
 parameters_inifile = "parameters.ini"
 lang = "lang"
+encoding = "encoding"
 
 txt_lists_gen = "txt_lists_gen"
 txt_user_acc_def = "txt_user_acc_def"
@@ -56,20 +58,25 @@ def load_parameters_from_ini(filename):
     for section in config.sections():
         for key, value in config.items(section):
             if key == lang or \
-            	key == txt_lists_gen or key == txt_user_acc_def or key == txt_files_def or \
-            	key == txt_rh_users_list or key == txt_files_gen or \
                 key == pf_kname or key == unpf_kname or key == addgp_kname or \
                 key == genacc_kname or key == sysserv_kname or \
                 key == pfminocc_kname or key == pfmaxocc_kname or \
                 key == unpfminocc_kname or key == unpfmaxocc_kname:
                     parameters[key] = value.split(", ")
+            elif key == encoding or \
+            	key == txt_lists_gen or key == txt_user_acc_def or key == txt_files_def or \
+            	key == txt_rh_users_list or key == txt_files_gen:
+	            	parameters[key] = value
             else:
-                parameters[key] = [int(x) for x in value.split(", ")]
+                	parameters[key] = [int(x) for x in value.split(", ")]
 
     return parameters
 
 
 ini_parameters = load_parameters_from_ini(parameters_inifile)
+
+# Encoding
+file_encoding = ini_parameters[encoding]
 
 # Initialization of Faker
 language = ini_parameters[lang]
@@ -82,7 +89,7 @@ max_numberof_groups = ini_parameters[max_nbofgp_kname]
 max_numberof_groups = int(max_numberof_groups[0])
 
 
-print(", ".join(ini_parameters[txt_lists_gen]))
+print(ini_parameters[txt_lists_gen])
 
 # Creation of the list of remunerated functions associated with the accounts with their autorized number of occurrences
 functions_str = ini_parameters[pf_kname]
@@ -144,7 +151,7 @@ max_numberof_system_service_accounts = len(system_service_accounts)
 min_numberof_system_service_accounts = math.floor(max_numberof_system_service_accounts * system_service_accounts_rate)
 numberof_system_service_accounts = random.randint(min_numberof_system_service_accounts, max_numberof_system_service_accounts)
 
-print(", ".join(ini_parameters[txt_user_acc_def]))
+print(ini_parameters[txt_user_acc_def])
 # Generation of a unique SamAccountName
 def generate_unique_samaccountname(first_name, last_name, existing_samaccountnames):
     # Handle cases where first or last name is empty
@@ -208,8 +215,9 @@ def assign_user_function(existing_user_functions):
         elif all(item[1] == 0 for item in existing_user_functions):
             raise ValueError("All user functions have reached their maximum occurrences.")
 
-print(", ".join(ini_parameters[txt_files_def]))
-print(", ".join(ini_parameters[txt_rh_users_list]))
+print(ini_parameters[txt_files_def])
+print(ini_parameters[txt_rh_users_list])
+
 # Generation of CSV files
 def generate_csv_files():
     try:
@@ -252,7 +260,7 @@ def generate_csv_files():
         df_rh_users.reset_index(drop=True, inplace=True)
 
         # Save first CSV file
-        df_rh_users.to_csv("RH_Users_extract.csv", index=False, sep=";")
+        df_rh_users.to_csv("RH_Users_extract.csv", index=False, sep=";", encoding=file_encoding)
 
         # -- SECOND CSV FILE --
         # Generation of data for AD_Users_extract
@@ -302,7 +310,7 @@ def generate_csv_files():
         df_ad_users.reset_index(drop=True, inplace=True)
 
         # Saving the second CSV file
-        df_ad_users.to_csv("AD_Users_extract.csv", index=False, sep=";")
+        df_ad_users.to_csv("AD_Users_extract.csv", index=False, sep=";", encoding=file_encoding)
 
         # -- THIRD CSV FILE --
         # Generation of data for AD_Generic_Users_extract
@@ -345,7 +353,7 @@ def generate_csv_files():
         df_ad_generic_accounts.reset_index(drop=True, inplace=True)
 
         # Saving the third CSV file
-        df_ad_generic_accounts.to_csv("AD_Generic_Users_extract.csv", index=False, sep=";")
+        df_ad_generic_accounts.to_csv("AD_Generic_Users_extract.csv", index=False, sep=";", encoding=file_encoding)
 
         # -- FOURTH CSV FILE --
          # Generation of data for AD_System_Services_extract
@@ -388,7 +396,7 @@ def generate_csv_files():
         df_system_services.reset_index(drop=True, inplace=True)
 
         # Saving the fourth CSV file
-        df_system_services.to_csv("AD_System_Services_extract.csv", index=False, sep=";")
+        df_system_services.to_csv("AD_System_Services_extract.csv", index=False, sep=";", encoding=file_encoding)
 
         # -- FIFTH CSV FILE --
          # Generation of data for AD_Users_and_Groups_extract
@@ -429,7 +437,7 @@ def generate_csv_files():
         df_ad_users_and_groups.reset_index(drop=True, inplace=True)
 
         # Saving the fifth CSV file
-        df_ad_users_and_groups.to_csv("AD_Users_and_Groups_extract.csv", index=False, sep=";")
+        df_ad_users_and_groups.to_csv("AD_Users_and_Groups_extract.csv", index=False, sep=";", encoding=file_encoding)
     except ValueError as e:
         print(f"ValueError: {e}")
         

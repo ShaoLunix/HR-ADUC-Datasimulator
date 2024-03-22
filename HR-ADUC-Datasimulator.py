@@ -14,6 +14,7 @@
 # [2024-02-29] [1.0.0] [Stéphane-Hervé] - First version                       #
 # [2024-03-19] [1.0.1] [Stéphane-Hervé] - Bugs fixes                          #
 # [2024-03-20] [1.0.2] [Stéphane-Hervé] - Encoding fixes                      #
+# [2024-03-22] [1.0.3] [Stéphane-Hervé] - Encoding fixes                      #
 # *************************************************************************** #
 
 import pandas as pd
@@ -21,10 +22,12 @@ import configparser
 from faker import Faker
 import random
 import math
+import os
 from unidecode import unidecode
 
 # Parameters
 parameters_inifile = "parameters.ini"
+parameters_encoding= 'utf-8'
 lang = "lang"
 encoding = "encoding"
 
@@ -52,7 +55,7 @@ unpfmaxocc_kname = "unpf_max_occurrences"
 # Load parameters from INI file
 def load_parameters_from_ini(filename):
     config = configparser.ConfigParser()
-    config.read(filename)
+    config.read(filename, encoding=parameters_encoding)
 
     parameters = {}
     for section in config.sections():
@@ -76,6 +79,7 @@ def load_parameters_from_ini(filename):
 ini_parameters = load_parameters_from_ini(parameters_inifile)
 
 # Encoding
+os.system('chcp 65001')
 file_encoding = ini_parameters[encoding]
 
 # Initialization of Faker
@@ -87,7 +91,6 @@ min_numberof_groups = ini_parameters[min_nbofgp_kname]
 min_numberof_groups = int(min_numberof_groups[0])
 max_numberof_groups = ini_parameters[max_nbofgp_kname]
 max_numberof_groups = int(max_numberof_groups[0])
-
 
 print(ini_parameters[txt_lists_gen])
 
@@ -442,5 +445,5 @@ def generate_csv_files():
         print(f"ValueError: {e}")
         
 # Call the function to generate the CSV files
-print ("Génération des fichiers CSV.")
+print (ini_parameters[txt_files_gen])
 generate_csv_files()
